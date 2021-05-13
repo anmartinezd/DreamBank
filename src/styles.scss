@@ -2,37 +2,11 @@
 @import './styles/custom-theme';
 @import '../node_modules/bootstrap/scss/bootstrap';
 
+*{
+    box-sizing: border-box;
+}
+
 html, body{
     width: 100%;
     height: 100%;
-}
-
-.custom-btn-info{
-    @extend .btn-outline-info;
-    @extend .btn-lg;
-    @extend .rounded-pill;
-    color: $primary;    
-    &:hover {
-        @extend .btn-info;
-        @extend .btn-lg;
-        @extend .rounded-pill;
-        color: #fff;
-    }
-    &:active {
-        @extend .btn-info;
-        @extend .btn-lg;
-        @extend .rounded-pill;
-        color: #fff;
-    }
-    &:focused{
-        @extend .btn-info;
-        @extend .btn-lg;
-        @extend .rounded-pill;
-        color: #fff;
-    }
-
-}
-
-.custom-btn-outline-info{
-    color: $primary;
 }

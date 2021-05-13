@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <div class="col">
+                                    <img src="/assets/icons/mc_symbol.svg" height="36px"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span class="h4">{{productNumber}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10">
+                                {{ownerName | uppercase}}
+                            </div>
+                            <div class="col-2">
+                                {{ expirationDate }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-between  fw-bold">
+            <div>Remaining Amount</div> <div>%38</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="progress">
+                <div class="progress-bar bg-info" style="width: 62%;"></div>
+                <div class="progress-bar bg-danger" style="width: 38%;"></div>
+            </div>
+        </div>
+    </div>
+</div>

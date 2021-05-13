@@ -1,5 +1,5 @@
 // theme base colors
-@import url(https://use.fontawesome.com/releases/v5.0.10/css/all.css);
+@import url(https://use.fontawesome.com/releases/v5.15.3/css/all.css);
 @import url(https://fonts.googleapis.com/css?family=Nunito:200,300,400,700);
 $font-family-base:Nunito;
 @import url(https://fonts.googleapis.com/css?family=Nunito:200,300,400,700);
@@ -15,6 +15,7 @@ $dark:          #022552;
 
 $body-color: $primary;
 $border-color: $primary;
+$border-radius: .5rem;
 
 $input-border-color: $primary;
 $input-focus-border-color: tint-color($primary, 50%);
@@ -22,3 +23,9 @@ $input-focus-border-color: tint-color($primary, 50%);
 $border-width: 3px;
 $spacer: 1.2rem;
 $btn-border-radius:1.35rem;
+
+//tables customization
+$table-color: #8c8c8c;
+$table-active-bg-factor: .075;
+
+$box-shadow:   0rem .1rem 1rem rgba($dark, .15);
