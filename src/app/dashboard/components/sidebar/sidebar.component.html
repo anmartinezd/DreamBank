@@ -1,3 +1,18 @@
-<div class="container vh-100  bg-dark">
-Hola Sidebar
-</div>
+<nav class="d-flex flex-column flex-shrink-0 py-3 bg-dark h-100 fs-5 fw-light z-3">
+    <a class="m-5 text-center">
+        <i class="fas fa-adjust fw-bold" style="font-size: 4rem;"></i>
+    </a>
+    <ul class="nav flex-column">
+        <li *ngFor="let option of menuOptions" class="nav-ietm text-info mb-4">
+            <span class="px-5">{{option.label}}</span>
+            <div 
+                *ngFor="let subOption of option.submenu" 
+                class="nav-item px-5 text-light py-2"
+                [routerLink]="subOption.link"
+                routerLinkActive="active"
+            >
+                {{subOption.label}}
+            </div>
+        </li>
+    </ul>
+</nav>

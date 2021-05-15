@@ -5,10 +5,16 @@ import { TableComponent } from './components/table/table.component';
 
 
 @NgModule({
-  declarations: [BankCardComponent, TableComponent],
+  declarations: [
+    BankCardComponent, 
+    TableComponent
+  ],
   imports: [
     CommonModule
   ],
-  exports: []
+  exports: [
+    TableComponent,
+    BankCardComponent
+  ]
 })
 export class SharedModule { }

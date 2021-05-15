@@ -1,1 +1,3 @@
-<p>transactions works!</p>
+<app-table [headers]="headers" [dataSource]="dataSource" (onRowClicked)="handleRowClicked($event)">
+    <a class="nav-link text-muted">All Transactions</a>
+</app-table>

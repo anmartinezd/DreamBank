@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountsComponent } from './accounts.component';
-import { AccountListComponent } from './components/account-list/account-list.component';
-
+import { AccountsRoutingModule } from './accounts-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [AccountsComponent, AccountListComponent],
+  declarations: [AccountsComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    AccountsRoutingModule,
+    SharedModule
   ]
 })
 export class AccountsModule { }

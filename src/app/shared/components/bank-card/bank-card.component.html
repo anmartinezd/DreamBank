@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container p-0">
     <div class="row mb-4">
         <div class="col">
-            <div class="card bg-primary text-white">
+            <div class="card bank-card" [ngClass]="bgclass">
                 <div class="card-body">
-                    <div class="container-fluid">
-                        <div class="row">
+                    <div class="container-fluid p-0">
+                        <div class="row mb-2">
                             <div class="col">
                                 <div class="col">
                                     <img src="/assets/icons/mc_symbol.svg" height="36px"/>
@@ -12,16 +12,18 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col mb-5">
                                 <span class="h4">{{productNumber}}</span>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-8">
                                 {{ownerName | uppercase}}
                             </div>
-                            <div class="col-2">
+                            <div class="col-4">
+                               <span class="m-auto">
                                 {{ expirationDate }}
+                               </span> 
                             </div>
                         </div>
                     </div>
@@ -31,14 +33,14 @@
     </div>
     <div class="row">
         <div class="col d-flex justify-content-between  fw-bold">
-            <div>Remaining Amount</div> <div>%38</div>
+            <div>Remaining Amount</div> <div>%{{remainingAmount}}</div>
         </div>
     </div>
     <div class="row">
         <div class="col">
             <div class="progress">
-                <div class="progress-bar bg-info" style="width: 62%;"></div>
-                <div class="progress-bar bg-danger" style="width: 38%;"></div>
+                <div class="progress-bar bg-info" [ngStyle]="{'width': progress.info}"></div>
+                <div class="progress-bar bg-danger" [ngStyle]="{'width': progress.danger}"></div>
             </div>
         </div>
     </div>

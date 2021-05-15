@@ -7,10 +7,14 @@ const routes: Routes = [
     path: '',
     component: TransactionsComponent
   },
+  {
+    path: 'inquire-transactions',
+    component: TransactionsComponent
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class TransactionsRoutingModule { }

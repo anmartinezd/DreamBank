@@ -9,12 +9,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'account-summary',
+        redirectTo: 'accounts',
         pathMatch: 'full'
-      },
-      {
-        path: 'account-summary',
-        loadChildren: () => import('../account/account.module').then(m => m.AccountModule),
       },
       {
         path: 'accounts',
@@ -29,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class DashboardRoutingModule { }

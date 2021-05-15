@@ -1,1 +1,34 @@
-<p>accounts works!</p>
+<div class="container-fluid ">
+    <div class="row mb-5">
+        <!-- Account Selector Component -->
+        <app-table [headers]="headers" [dataSource]="dataSource" [hasIcons]="true">
+            <a routerLink="" class="text-muted text-decoration-none">ALL ACCOUNTS</a>
+        </app-table>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row px-2 py-4">
+                <div class="d-flex col">
+                    <img src="./assets/icons/wallet.svg"
+                        alt='<div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>'
+                        srcset=""
+                        height="36px"> <span class="h4 fw-bold align-text-bottom">Wallet</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <app-bank-card [productNumber]="5306917047402831" ownerName="Anderson Martínez"
+                        [expirationDate]="'11/33'" [bgType]="'bg-primary'" [remainingAmount]="50"></app-bank-card>
+                </div>
+                <div class="col">
+                    <app-bank-card [productNumber]="5306917047402831" ownerName="Anderson Martínez"
+                        [expirationDate]="'11/33'" [bgType]="'bg-secondary'" [remainingAmount]="78"></app-bank-card>
+                </div>
+            </div>
+        </div>
+        <!-- wallet-component -->
+        <div class="col-4">
+            <!-- Budget Component -->
+        </div>
+    </div>
+</div>
