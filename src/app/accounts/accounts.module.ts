@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { AccountsComponent } from './accounts.component';
 import { AccountsRoutingModule } from './accounts-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { BudgetComponent } from './components/budget/budget.component';
 
 
 @NgModule({
-  declarations: [AccountsComponent],
+  declarations: [AccountsComponent, BudgetComponent],
   imports: [
     CommonModule,
     AccountsRoutingModule,
