@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: '',
+  API_URL: 'http://demo7618142.mockable.io/',
 };
 
 /*

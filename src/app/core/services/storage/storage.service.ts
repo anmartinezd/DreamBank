@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+
 import { ObservableStore } from '@codewithdan/observable-store';
-import { GlobalState } from '../models/globalState';
+
+import { GlobalStateInterface } from '../../interfaces/globalState.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StorageService extends ObservableStore<GlobalState> {
+export class StorageService extends ObservableStore<GlobalStateInterface> {
 
   constructor() {
     super({trackStateHistory:true});
@@ -19,7 +21,7 @@ export class StorageService extends ObservableStore<GlobalState> {
     return this.getState();
   }
 
-  getCurrentStateProperty(property) {
-    return this.getStateProperty(property);
+  getCurrentStateProperty<T>(property): T {
+    return this.getStateProperty<T>(property);
   }
 }

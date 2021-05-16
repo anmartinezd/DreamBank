@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { bgType } from './models/background-type';
-
+import { accountTypes } from 'src/app/core/constants/accunt-type.enum';
 @Component({
   selector: 'app-bank-card',
   templateUrl: './bank-card.component.html',
@@ -29,9 +28,9 @@ export class BankCardComponent implements OnInit {
 
   getDottedNumber() {
     const numberToDotted = [...(this.productNumber.toString())];
-    const firstTelveNumbers = numberToDotted.slice(0,12).map(n => '*');
+    const firstTwelveNumbers = numberToDotted.slice(0,12).map(n => '*');
     const lastnumbers = numberToDotted.slice(12,17);
-    this.productNumber = [...firstTelveNumbers,...lastnumbers].reduce((p, c, i) => p += (i && !(i % 4)) ? " " + c : c, "");
+    this.productNumber = [...firstTwelveNumbers,...lastnumbers].reduce((p, c, i) => p += (i && !(i % 4)) ? " " + c : c, "");
   }
 
   setProgress() {
@@ -42,10 +41,10 @@ export class BankCardComponent implements OnInit {
 
   setType() {
     switch (this.bgType) {
-      case bgType.primary:
+      case accountTypes.checking:
         this.bgclass = ['bg-primary', 'text-white'];
         break;
-      case bgType.secondary:
+      case accountTypes.savings:
         this.bgclass = ['bg-secondary', 'text-black', 'border-0'];
         break;
       default:

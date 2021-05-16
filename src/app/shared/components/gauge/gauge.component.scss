@@ -1,24 +1,23 @@
 svg.arc-progress {
-    margin: auto;
-    display: block;
-  }
-  
-  svg.arc-progress path {
-    stroke-linecap: round;
-  }
-  
-  svg.arc-progress path.progress-background {
-    fill: none;
-  }
-  
-  svg.arc-progress path.progress-fill {
-    fill: none;
-  }
+  margin: auto;
+  display: block;
+}
 
-  .budget-information {
-    position: relative;
-    z-index: 9;
-    bottom: 200px;
-    height: 0px;
-  }
-  
+svg.arc-progress path {
+  stroke-linecap: round;
+}
+
+svg.arc-progress path.progress-background {
+  fill: none;
+}
+
+svg.arc-progress path.progress-fill {
+  fill: none;
+}
+
+.budget-information {
+  position: relative;
+  z-index: 9;
+  bottom: 200px;
+  height: 0px;
+}

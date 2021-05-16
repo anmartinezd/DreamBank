@@ -1,4 +1,4 @@
-export class Login{
+export class LoginModel{
     public id: number;
     public password: string;
 

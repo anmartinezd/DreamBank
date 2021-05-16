@@ -1,4 +1,6 @@
-export class Transaction {
+import { transactionStatus } from "../constants/transaction-status.enum";
+
+export class TransactionModel {
     transactionId: number;
     ammount: number;
     transactionStatus: transactionStatus;
@@ -7,10 +9,4 @@ export class Transaction {
     description: string;
     currency: string;
     balance: number; 
-}
-
-export enum transactionStatus {
-    accepted = 'Accepted',
-    declined = 'Declined',
-    waiting = 'Waiting'
 }

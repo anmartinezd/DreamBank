@@ -1,0 +1,35 @@
+@import "~bootstrap/scss/functions";
+
+@import url(https://use.fontawesome.com/releases/v5.15.3/css/all.css);
+@import url(https://fonts.googleapis.com/css?family=Nunito:200,300,400,700);
+$font-family-base:Nunito;
+@import url(https://fonts.googleapis.com/css?family=Nunito:200,300,400,700);
+$headings-font-family:Nunito;
+
+
+// theme colors
+$primary:       #205fcb;
+$secondary:     #dee7f4;
+$info:          #6ef2e7;
+$warning:       #f69e00;
+$danger:        #f08789;
+$light:         #f9f9f9;
+$dark:          #022552;
+
+
+//buttons customization
+$btn-border-radius: 40px;
+$btn-font-size: 1.2rem;
+$btn-padding-y: .5em;
+
+$btn-border-radius-sm: 40px;
+
+// images
+$thumbnail-border-width: 0px;
+$thumbnail-padding: 0px;
+
+//tables customization
+$table-color: #8c8c8c;
+$table-active-bg-factor: .075;
+
+$box-shadow:   0rem .1rem 1rem rgba($dark, .15);
