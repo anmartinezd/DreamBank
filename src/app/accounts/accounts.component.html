@@ -1,7 +1,7 @@
 <div class="container-fluid ">
     <div class="row mb-5">
         <!-- Account Selector Component -->
-        <app-table [headers]="headers" [dataSource]="dataSource" [hasIcons]="true">
+        <app-table [headers]="headers" [dataSource]="accounts" [hasIcons]="true">
             <a routerLink="" class="text-muted text-decoration-none">ALL ACCOUNTS</a>
         </app-table>
     </div>
@@ -10,33 +10,23 @@
         <div class="col-8">
             <div class="row px-2 py-4">
                 <div class="d-flex col align-items-baseline">
-                    <img src="./assets/icons/wallet.svg"
-                        srcset="" height="36px" class="me-2"> <span class="h4 fw-bold align-text-bottom">Wallet</span>
+                    <img src="./assets/icons/wallet.svg" srcset="" height="36px" class="me-2"> <span
+                        class="h4 fw-bold align-text-bottom">Wallet</span>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <app-bank-card [productNumber]="5306917047402831" ownerName="Anderson Martínez"
-                        [expirationDate]="'11/33'" [bgType]="'bg-primary'" [remainingAmount]="50"></app-bank-card>
-                </div>
-                <div class="col">
-                    <app-bank-card [productNumber]="5306917047402831" ownerName="Anderson Martínez"
-                        [expirationDate]="'11/33'" [bgType]="'bg-secondary'" [remainingAmount]="78"></app-bank-card>
-                </div>
-            </div>
+            <app-cards-list [accounts]="accounts"></app-cards-list>
         </div>
         <!-- Budget Component -->
         <div class="col-4">
             <div class="row px-2 py-4 ">
                 <div class="d-flex col align-items-center">
-                    <img src="./assets/icons/wallet.svg"
-                        srcset="" height="36px" class="me-2" /> 
+                    <img src="./assets/icons/wallet.svg" srcset="" height="36px" class="me-2" />
                     <span class="h4 fw-bold align-text-bottom mt-2">Wallet</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <app-budget></app-budget>
+                    <app-budget [accounts]="accounts"></app-budget>
                 </div>
             </div>
         </div>

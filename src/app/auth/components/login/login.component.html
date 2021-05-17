@@ -8,22 +8,22 @@
             For money safety, please delete all extensions
             for the browser you use to login your wallet
         </p>
-        <form autocomplete="off">
+        <form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="onLogin()">
             <fieldset class="row mb-3">
-                <label for="login" class="col-sm-2 col-form-label">Login</label>
+                <label for="login" class="col-sm-2 col-form-label">Id number</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="login">
+                    <input type="text" class="form-control" id="login" formControlName="identificationNumber">
                 </div>
             </fieldset>
             <fieldset class="row mb-3">
                 <label for="password" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" id="password" formControlName="password">
                 </div>
             </fieldset>
             <div class="row justify-content-end">
                 <div class="d-grid col-10">
-                    <button class="btn btn-primary">Login</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="!this.loginForm.valid">Login</button>
                 </div>
             </div>
         </form>

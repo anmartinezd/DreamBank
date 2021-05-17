@@ -6,12 +6,12 @@
     </div>
     <div class="row">
         <div class="col">
-            <app-gauge class="budget-container" [size]="250" [gap]="60" [strokeWidth]="10" [progress]="70">
+            <app-gauge class="budget-container" [size]="250" [gap]="60" [strokeWidth]="10" [progress]="spentPercentage">
                 <div class="">
                     <img src="./assets/icons/credit-card.svg" height="18px" width="18px" alt="">
                     <div>You'are spent</div>
-                    <div class="h2">$6</div>
-                    <div>of <span class="fw-bold">$3,248</span></div>
+                    <div class="h2">{{totalSpent | currency}}</div>
+                    <div>of <span class="fw-bold">{{budgetLimit | currency}}</span></div>
                 </div>
             </app-gauge>
         </div>

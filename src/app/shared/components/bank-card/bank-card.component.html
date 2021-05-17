@@ -12,13 +12,16 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col mb-5">
-                                <span class="h4">{{productNumber}}</span>
+                            <div class="d-flex col mb-5 justify-content-between p-2">
+                               <div *ngFor="let i of [1,2,3]">
+                                   &#8226; &#8226; &#8226; &#8226;
+                                </div>
+                               <div class="h4">{{number}}</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-8">
-                                {{ownerName | uppercase}}
+                                {{name | uppercase}}
                             </div>
                             <div class="col-4">
                                <span class="m-auto">
@@ -33,7 +36,7 @@
     </div>
     <div class="row">
         <div class="col d-flex justify-content-between  fw-bold">
-            <div>Remaining Amount</div> <div>%{{remainingAmount}}</div>
+            <div>Remaining Amount</div> <div>%{{remaining | number: '1.0-0':'en-GB'}}</div>
         </div>
     </div>
     <div class="row">

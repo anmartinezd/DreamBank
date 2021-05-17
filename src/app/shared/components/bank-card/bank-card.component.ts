@@ -6,11 +6,11 @@ import { accountTypes } from 'src/app/core/constants/accunt-type.enum';
   styleUrls: ['./bank-card.component.scss']
 })
 export class BankCardComponent implements OnInit {
-  @Input() productNumber: number | string;
-  @Input() ownerName: string;
+  @Input() number: number | string;
+  @Input() name: string;
   @Input() expirationDate: string;
-  @Input() bgType;
-  @Input() remainingAmount;
+  @Input() type;
+  @Input() remaining;
   bgclass: string | string[] = 'bg-secondary';
   progress = {
     info: '100%',
@@ -22,25 +22,16 @@ export class BankCardComponent implements OnInit {
   ngOnInit(): void {
     this.setType()
     this.setProgress();
-    this.getDottedNumber()
-  }
-
-
-  getDottedNumber() {
-    const numberToDotted = [...(this.productNumber.toString())];
-    const firstTwelveNumbers = numberToDotted.slice(0,12).map(n => '*');
-    const lastnumbers = numberToDotted.slice(12,17);
-    this.productNumber = [...firstTwelveNumbers,...lastnumbers].reduce((p, c, i) => p += (i && !(i % 4)) ? " " + c : c, "");
   }
 
   setProgress() {
     
-    this.progress.danger = `${100 - this.remainingAmount}%`;
-    this.progress.info = `${this.remainingAmount}%`;
+    this.progress.danger = `${100 - this.remaining}%`;
+    this.progress.info = `${this.remaining}%`;
   }
 
   setType() {
-    switch (this.bgType) {
+    switch (this.type) {
       case accountTypes.checking:
         this.bgclass = ['bg-primary', 'text-white'];
         break;

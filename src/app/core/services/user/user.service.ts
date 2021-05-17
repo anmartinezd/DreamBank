@@ -11,7 +11,8 @@ export class UserService {
   constructor(private storageService: StorageService) { }
 
   getCurrentUser(): UserModel {
-    return this.storageService.getCurrentStateProperty<UserModel>('user');
+    const user = new UserModel(this.storageService.getCurrentStateProperty<UserModel>('user'));
+    return user;
   }
 
 }

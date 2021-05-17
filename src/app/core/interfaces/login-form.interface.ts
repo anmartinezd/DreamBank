@@ -1,4 +1,4 @@
 export interface LoginFormInterface{
-    id: number;
+    identificationNumber: number;
     password: string;
 }

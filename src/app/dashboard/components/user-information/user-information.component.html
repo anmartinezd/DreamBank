@@ -1,10 +1,10 @@
 <div class="container">
-    <div class="row">
+    <div class="row py-2">
         <div class="d-flex col-6 align-items-center">
             <img [src]="user.profilePicture" class="profile-img circle-image img-thumbnail" alt="">
             <div class="d-flex flex-column justify-content-center p-2 user_information-container">
                 <h5>Welcome back, {{user.firstName}}!</h5>
-                <p>Your last login was {{user.lastLogin}}</p>
+                <p>Your last login was {{user.getLastLogin()}}</p>
             </div>
         </div>
         <div

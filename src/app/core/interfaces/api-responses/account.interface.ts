@@ -1,11 +1,16 @@
+import { accountTypes } from "../../constants/accunt-type.enum";
+
 export interface AccountInterface{
     id: string;
-    userName:string;
+    accountName:string;
     number: number;
     name: string;
-    type: string;
+    cardNumber: string;
+    expirationDate: string;
+    type: accountTypes;
     balance: number;
     status: string;
-    spend: number;
-    quota: number;
+    currency: string;
+    spent: number;
+    limit: number;
 }
