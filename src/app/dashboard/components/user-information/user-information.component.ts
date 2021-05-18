@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserModel } from '../../../core/models/user.model';
+import { NewProductComponent } from '../new-product/new-product.component';
 
 @Component({
   selector: 'app-user-information',
@@ -9,9 +11,13 @@ import { UserModel } from '../../../core/models/user.model';
 export class UserInformationComponent implements OnInit {
   @Input() user: UserModel;
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
+  }
+
+  onNewProduct(){
+    const modalRef = this.modalService.open(NewProductComponent,{size:'xl'});
   }
 
 }

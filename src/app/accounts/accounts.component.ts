@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountInterface } from '../core/interfaces/api-responses/account.interface';
-import { AccountService } from './services/account/account.service';
+import { AccountService } from '../core/services/account/account.service';
 import { StorageService } from '../core/services/storage/storage.service';
 import { UserModel } from '../core/models/user.model';
 import { Observable } from 'rxjs';

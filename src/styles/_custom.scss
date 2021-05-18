@@ -1,12 +1,17 @@
-.container__overflowx{
-    overflow-x: hidden;
+.container__overflowx {
+  overflow-x: hidden;
 }
 
-.circle-image{
-    border-radius: 50%;
+.circle-image {
+  border-radius: 50%;
 }
 
-.profile-img{
-    width: 100px;
-    height: 100px;
+.profile-img {
+  width: 100px;
+  height: 100px;
 }
+
+.ng-touched.ng-invalid {
+  @extend .is-invalid;
+}
+

@@ -91,14 +91,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return authenticate();
                 case url.endsWith('1/accounts') && method === 'GET':
                     return getAccounts();
-                case url.match('1/accounts/1/transactions') && method === 'GET':
+                case url.match('1/transactions') && method === 'GET':
                     return getTransactionsById();
-                case url.match('1/accounts/2/transactions') && method === 'GET':
+                case url.match('2/transactions') && method === 'GET':
                     return getTransactionsById();
-                case url.match('1/accounts/3/transactions') && method === 'GET':
+                case url.match('3/transactions') && method === 'GET':
                     return getTransactionsById();
-                case url.match(/\/users\/\d+$/) && method === 'DELETE':
-                    return deleteUser();
+                case url.endsWith('/logout') && method === 'POST':
+                    return logout();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -129,10 +129,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             return ok(transactions);
         }
 
-        function deleteUser() {
-            if (!isLoggedIn()) return unauthorized();
-            localStorage.setItem('users', JSON.stringify(users));
-            return ok();
+        function logout() {
+            return ok({});
         }
 
         function getAccounts() {

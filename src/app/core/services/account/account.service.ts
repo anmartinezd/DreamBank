@@ -4,10 +4,11 @@ import { Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
-import { AccountModel } from '../../../core/models/account.model';
-import { AccountInterface } from '../../../core/interfaces/api-responses/account.interface';
+import { AccountInterface } from '../../interfaces/api-responses/account.interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AccountService {
 
   constructor(private httpClient: HttpClient) {

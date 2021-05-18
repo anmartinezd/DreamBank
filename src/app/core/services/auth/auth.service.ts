@@ -32,16 +32,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.httpClient.post(`${environment.API_URL}/logout`, {})
-      .pipe(
-        tap(
-          () => this.storageService.changeCurrentState({})
-        ),
-        catchError((err) => {
-          console.error(err)
-          return throwError(err);
-        })
-      );
+    return this.storageService.changeCurrentState({});
   };
 
   isAuthenticated() {

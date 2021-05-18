@@ -16,6 +16,8 @@ $danger:        #f08789;
 $light:         #f9f9f9;
 $dark:          #022552;
 
+// body customization
+$body-color: $primary;
 
 //buttons customization
 $btn-border-radius: 40px;
@@ -24,9 +26,33 @@ $btn-padding-y: .5em;
 
 $btn-border-radius-sm: 40px;
 
+//forms
+$form-padding-y: 0.5rem;
+$form-feedback-icon-valid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='#{$info}' d='M0 11.522l1.578-1.626 7.734 4.619 13.335-12.526 1.353 1.354-14 18.646z'/></svg>");
+$form-feedback-icon-invalid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='#{$danger}' d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'/></svg>");
+// inputs text
+$input-padding-y: $form-padding-y;
+$input-border-color: $primary;
+$input-focus-border-color: $info;
+$input-btn-focus-color-opacity: 0;
+
+// inputs select 
+$form-select-padding-y: $form-padding-y;
+$form-select-indicator-color: $primary;
+$form-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
+
 // images
 $thumbnail-border-width: 0px;
 $thumbnail-padding: 0px;
+
+// modal
+$modal-content-bg: $dark;
+$modal-content-border-radius: 0px;
+$modal-header-border-width: 0px;
+$modal-content-border-width: 0px;
+$modal-xl: 100%;
+$modal-backdrop-bg: $dark;
+$modal-backdrop-opacity: 1;
 
 //tables customization
 $table-color: #8c8c8c;

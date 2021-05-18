@@ -5,6 +5,8 @@ import { TableComponent } from './components/table/table.component';
 import { GaugeComponent } from './components/gauge/gauge.component';
 import { InputTextComponent } from './components/forms/input-text/input-text.component';
 import { InputSelectComponent } from './components/forms/input-select/input-select.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,11 +19,19 @@ import { InputSelectComponent } from './components/forms/input-select/input-sele
   ],
   imports: [
     CommonModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
+    NgbModule,
     TableComponent,
     BankCardComponent,
-    GaugeComponent
+    GaugeComponent,
+    InputTextComponent,
+    InputSelectComponent,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule { }
