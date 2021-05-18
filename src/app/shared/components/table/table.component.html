@@ -1,0 +1,25 @@
+<div class="container-fluid p-2 shadow rounded">
+  <div class="row">
+    <div class="col px-3 mt-2 py-2 text-muted">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="row table-separator">
+    <div class="col-12 p-1 table-responsive">
+      <table class="table table-borderless table-hover">
+        <thead>
+          <tr>
+            <th *ngIf="hasIcons" scope="col" class="text-primary"></th>
+            <th *ngFor="let header of headers" scope="col" class="text-primary">{{header.label}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataSource" id="1" (click)="handleRowClick($event, item)">
+            <th *ngIf="item.icon" scope="row" class="text-center"><i [class]="item.icon"></i></th>
+            <td *ngFor="let header of headers" class="p-2">{{ item[header.key] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

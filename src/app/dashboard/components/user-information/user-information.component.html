@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row py-2">
+        <div class="d-flex col-6 align-items-center">
+            <img [src]="user.profilePicture" class="profile-img circle-image img-thumbnail" alt="">
+            <div class="d-flex flex-column justify-content-center p-2 user_information-container">
+                <h5>Welcome back, {{user.firstName}}!</h5>
+                <p>Your last login was {{user.getLastLogin()}}</p>
+            </div>
+        </div>
+        <div
+            class="d-flex
+                    flex-column border-right-2
+                    border-dark col-3
+                    align-items-baseline
+                    justify-content-center
+                    text-start">
+            <div class="account-balance w-100 border-end border-light">
+                <div>
+                    Total Balance
+                </div>
+                <div class="h1">
+                    {{user.balance | currency}}
+                </div>
+            </div>
+        </div>
+        <div class="d-flex col-3 align-items-center justify-content-center">
+            <div class="d-flex flex-column justify-content-center buttons">
+                <button class="btn btn-sm border border-info mb-3 text-white" (click)="onNewProduct()">
+                    Request a new Product
+                </button>
+                <button class="btn btn-sm border border-info text-white">
+                    Make a Transfer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

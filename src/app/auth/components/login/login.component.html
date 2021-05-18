@@ -1,0 +1,21 @@
+<div class="row text-center">
+    <div class="col">
+        <h5 class="fw-bold">
+            W<span class="border-0 border-info border-bottom">elcome ba</span>ck
+        </h5>
+        <h1 class="fw-bold py-2">Login</h1>
+        <p class="text-break py-1 lh-1 mb-4">
+            For money safety, please delete all extensions
+            for the browser you use to login your wallet
+        </p>
+        <form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="onLogin()">
+            <app-input-text label="ID Number" [form]="loginForm" controlName="identificationNumber"></app-input-text>
+            <app-input-text type="password" label="Password" [form]="loginForm" controlName="password"></app-input-text>
+            <div class="row justify-content-end mt-3">
+                <div class="d-grid col-9">
+                    <button class="btn btn-primary" type="submit" [disabled]="!this.loginForm.valid">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

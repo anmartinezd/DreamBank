@@ -1,0 +1,50 @@
+<div class="container p-0">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="card bank-card" [ngClass]="bgclass">
+                <div class="card-body">
+                    <div class="container-fluid p-0">
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="col">
+                                    <img src="/assets/icons/mc_symbol.svg" height="36px"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="d-flex col mb-5 justify-content-between p-2">
+                               <div *ngFor="let i of [1,2,3]">
+                                   &#8226; &#8226; &#8226; &#8226;
+                                </div>
+                               <div class="h4">{{number}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                {{name | uppercase}}
+                            </div>
+                            <div class="col-4">
+                               <span class="m-auto">
+                                {{ expirationDate }}
+                               </span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-between  fw-bold">
+            <div>Remaining Amount</div> <div>%{{remaining | number: '1.0-0':'en-GB'}}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="progress">
+                <div class="progress-bar bg-info" [ngStyle]="{'width': progress.info}"></div>
+                <div class="progress-bar bg-danger" [ngStyle]="{'width': progress.danger}"></div>
+            </div>
+        </div>
+    </div>
+</div>

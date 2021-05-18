@@ -1,0 +1,15 @@
+<fieldset [formGroup]="form" class="row mb-3">
+    <label [for]="controlName" [ngClass]="labelClases">{{label}}</label>
+    <div class="col-sm-9">
+        <div class="input-group" [class.has-error]="!form.get(controlName).valid"
+            [class.ng-valid]="form.get(controlName).valid">
+            <select class="form-select selectpickert" [ngClass]="inputClases" aria-label="Default select example">
+                <option class="bg-dark" selected>Agile Credit</option>
+                <option class="bg-dark"  value="1">Credit Card</option>
+                <option class="bg-dark" value="2">Saving Account</option>
+                <option class="bg-dark" value="3">Home Leasing</option>
+            </select>
+        </div>
+
+    </div>
+</fieldset>
