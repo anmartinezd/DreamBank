@@ -18,7 +18,6 @@ export class AccountSelectorComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if(this.accounts){
     console.log(this.accounts);
-    this.onSelectChange(this.accounts[0].id);
     }
   }
 

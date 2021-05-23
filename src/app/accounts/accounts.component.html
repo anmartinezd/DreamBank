@@ -1,7 +1,7 @@
 <div class="container-fluid ">
     <div class="row mb-5">
         <!-- Account Selector Component -->
-        <app-table [headers]="headers" [dataSource]="accounts$ | async">
+        <app-table [hasIcons]="true" [headers]="headers" [dataSource]="accounts$ | async" (onRowClicked)="handleAccountSelect($event)">
             <a routerLink="" class="text-muted text-decoration-none">ALL ACCOUNTS</a>
         </app-table>
     </div>

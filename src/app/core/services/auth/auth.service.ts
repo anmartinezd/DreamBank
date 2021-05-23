@@ -1,41 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable} from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
-import { StorageService } from '../storage/storage.service';
+import { SessionService } from '../session/session.service';
 
 import { LoginFormInterface } from '../../interfaces/login-form.interface';
-import { UserInterface } from '../../interfaces/api-responses/user.interface';
+import { SessionInterface } from '../../interfaces/api-responses/session.interface';
+import { last, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient, private storageService: StorageService) { }
+  private isLoggedIn$ = this.sessionService.tokenChanged$;
 
-  login(loginForm: LoginFormInterface): Observable<UserInterface> {
-    return this.httpClient.post<UserInterface>(`${environment.API_URL}/authenticate`, loginForm)
+  constructor(private httpClient: HttpClient, private sessionService: SessionService) { }
+
+  login(loginForm: LoginFormInterface): Observable<boolean> {
+    return this.httpClient.post<SessionInterface>(`${environment.API_URL}/authenticate`, loginForm)
       .pipe(
-        tap(
-          (user) => this.storageService.changeCurrentState({ user }),
-        ),
-        catchError((err) => {
-          console.error(err)
-          return throwError(err);
-        })
+        tap( ({token, userId}) => {
+          console.log(token)
+          this.sessionService.addToken(token),
+          this.sessionService.addUserId(userId);
+        }),
+        map(value => true)
       );
   }
 
   logout() {
-    return this.storageService.changeCurrentState({});
+    return this.sessionService.deleteStorage();
   };
 
   isAuthenticated() {
-    return this.storageService.getCurrentStateProperty<boolean>("user")? true : false;
+    return true;
   }
 }

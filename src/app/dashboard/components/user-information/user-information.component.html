@@ -1,10 +1,10 @@
 <div class="container">
     <div class="row py-2">
         <div class="d-flex col-6 align-items-center">
-            <img [src]="user.profilePicture" class="profile-img circle-image img-thumbnail" alt="">
+            <img [src]="user? user.profilePicture: './assets/icons/no-user.svg'" class="profile-img circle-image img-thumbnail" alt="">
             <div class="d-flex flex-column justify-content-center p-2 user_information-container">
-                <h5>Welcome back, {{user.firstName}}!</h5>
-                <p>Your last login was {{user.getLastLogin()}}</p>
+                <h5>Welcome back, {{user?.firstName}}!</h5>
+                <p>Your last login was {{user?.getLastLogin()}}</p>
             </div>
         </div>
         <div
@@ -19,7 +19,7 @@
                     Total Balance
                 </div>
                 <div class="h1">
-                    {{user.balance | currency}}
+                    {{user?.balance | currency}}
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { TransactionInterface } from 'src/app/core/interfaces/api-responses/transaction.interface';
+import { TransactionModel } from 'src/app/core/models/transaction.model';
 
 @Component({
   selector: 'app-transaction-information-detail',
@@ -8,7 +8,7 @@ import { TransactionInterface } from 'src/app/core/interfaces/api-responses/tran
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionInformationDetailComponent implements OnInit {
-  @Input() transaction: TransactionInterface;
+  @Input() transaction: TransactionModel;
 
   constructor() { }
 

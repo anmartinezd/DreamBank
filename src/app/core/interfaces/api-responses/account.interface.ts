@@ -1,7 +1,8 @@
 import { accountTypes } from "../../constants/accunt-type.enum";
 
 export interface AccountInterface{
-    id: string;
+    id: number;
+    userId: number;
     accountName:string;
     number: string;
     name: string;

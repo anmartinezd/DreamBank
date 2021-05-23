@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { AccountInterface } from '../../interfaces/api-responses/account.interface';
-import { map, tap } from 'rxjs/operators';
+import { map, switchMap, switchMapTo, tap } from 'rxjs/operators';
 import { AccountModel } from 'src/app/core/models/account.model';
 
 @Injectable({
@@ -13,8 +13,10 @@ import { AccountModel } from 'src/app/core/models/account.model';
 export class AccountService {
   constructor(private httpClient: HttpClient) {}
 
-  getUserAccounts(): Observable<AccountModel[]> {
+  getUserAccounts(userId: number): Observable<AccountModel[]> {
     return this.httpClient
-      .get<AccountModel[]>(`${environment.API_URL}/accounts`);
+      .get<AccountInterface[]>(`${environment.API_URL}/${userId}/accounts`).pipe(
+        map(accounts => accounts.map(account => new AccountModel(account))),
+      );
   }
 }

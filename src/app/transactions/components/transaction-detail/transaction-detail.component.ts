@@ -10,28 +10,29 @@ import { TransactionService } from 'src/app/core/services/transaction/transactio
 @Component({
   selector: 'app-transaction-detail',
   templateUrl: './transaction-detail.component.html',
-  styleUrls: ['./transaction-detail.component.scss']
+  styleUrls: ['./transaction-detail.component.scss'],
 })
 export class TransactionDetailComponent implements OnInit {
   transaction: TransactionModel | TransactionInterface;
   accountId: string;
   transactionId: string;
-  transaction$: Observable<TransactionInterface>;
+  transaction$: Observable<TransactionModel>;
 
   constructor(
-    private transactionService: TransactionService, 
+    private transactionService: TransactionService,
     private route: ActivatedRoute
-    ) { 
-      this.transaction$ = this.route.paramMap.pipe(
-        switchMap(params => {
-          this.accountId = params.get('accountId');
-          this.transactionId = params.get('transactionId');
-          return this.transactionService.transactionDetail(this.accountId, this.transactionId);
-        })
-      );
-    }
-
-  ngOnInit(): void {
+  ) {
+    this.transaction$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        this.accountId = params.get('accountId');
+        this.transactionId = params.get('transactionId');
+        return this.transactionService.transactionDetail(
+          this.accountId,
+          this.transactionId
+        );
+      })
+    );
   }
 
+  ngOnInit(): void {}
 }

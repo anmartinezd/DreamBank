@@ -29,7 +29,7 @@ export class CardsListComponent implements OnInit, OnChanges {
           name: account.name,
           expirationDate: account.expirationDate,
           type: account.type,
-          // remaining: account.getRemainingPercentage(),
+          remaining: account.getRemainingPercentage(),
         }));
     }
   }

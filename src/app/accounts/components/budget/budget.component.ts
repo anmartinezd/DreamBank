@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AccountModel } from '../../../core/models/account.model';
 
 @Component({
@@ -7,7 +7,7 @@ import { AccountModel } from '../../../core/models/account.model';
   styleUrls: ['./budget.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BudgetComponent implements OnInit {
+export class BudgetComponent implements OnInit, OnChanges {
   @Input() accounts: AccountModel[];
   budgetLimit: number = 0;
   totalSpent: number = 0;
@@ -16,12 +16,17 @@ export class BudgetComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.accounts);
-    this.getGeneralBudgetStatus();
+  }
+
+  ngOnChanges() {
+    if(this.accounts){
+      this.getGeneralBudgetStatus();
+    }
   }
 
 
   getGeneralBudgetStatus() {
+    console.log(this.accounts);
     if(this.accounts) {
       for (const account of this.accounts) {
         this.budgetLimit += account.limit;

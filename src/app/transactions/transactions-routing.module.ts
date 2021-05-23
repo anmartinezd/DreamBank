@@ -7,7 +7,7 @@ import { TransactionsComponent } from './transactions.component';
 const routes: Routes = [
   {
     path: '',
-    component: TransactionsComponent
+    component: TransactionListComponent
   },
   {
     path: 'inquire-transactions',

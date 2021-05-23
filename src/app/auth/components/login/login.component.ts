@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onLogin(){
-    console.log(this.loginForm.value);
     this.loginSubscription = this.authService.login(this.loginForm.value)
       .subscribe(
         {
-          next: () =>  {
+          next: (value) =>  {
+            console.log(value);
             this.router.navigate(['/']);
           },
           error: () => {
