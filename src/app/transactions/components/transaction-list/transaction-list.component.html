@@ -1,3 +1,14 @@
-<!-- <app-table [headers]="headers" (onRowClicked)="handleRowClicked($event)">
-    All Transactions
-</app-table> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <app-account-selector [accounts]="accounts$ | async" (accountSelectionChange)="handleAccountChange($event)"></app-account-selector>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <app-table [headers]="headers" [dataSource]="transactions$ | async" (onRowClicked)="handleRowClicked($event)">
+                All Transactions
+            </app-table>
+        </div>
+    </div>
+</div>

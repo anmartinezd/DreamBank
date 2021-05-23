@@ -22,11 +22,13 @@ export class BudgetComponent implements OnInit {
 
 
   getGeneralBudgetStatus() {
-    for (const account of this.accounts) {
-      this.budgetLimit += account.limit;
-      this.totalSpent += account.spent;
+    if(this.accounts) {
+      for (const account of this.accounts) {
+        this.budgetLimit += account.limit;
+        this.totalSpent += account.spent;
+      }
+      this.spentPercentage =  (this.totalSpent *100)/ this.budgetLimit;
     }
-    this.spentPercentage =  (this.totalSpent *100)/ this.budgetLimit;
   }
 
 }

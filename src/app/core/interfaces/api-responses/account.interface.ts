@@ -3,7 +3,7 @@ import { accountTypes } from "../../constants/accunt-type.enum";
 export interface AccountInterface{
     id: string;
     accountName:string;
-    number: number;
+    number: string;
     name: string;
     cardNumber: string;
     expirationDate: string;

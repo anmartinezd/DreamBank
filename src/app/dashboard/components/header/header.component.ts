@@ -7,19 +7,23 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   user: UserModel;
 
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.user = this.userService.getCurrentUser();
   }
 
-  onLogout(){
+  onLogout() {
     this.authService.logout();
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/auth/login');
   }
 }

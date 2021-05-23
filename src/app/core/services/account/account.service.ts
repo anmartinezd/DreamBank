@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { first, map, switchMap, tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { AccountInterface } from '../../interfaces/api-responses/account.interface';
+import { map, tap } from 'rxjs/operators';
+import { AccountModel } from 'src/app/core/models/account.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccountService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) {
-  }
-
-  getUserAccounts(id: string): Observable<AccountInterface[]> {
-    console.log(id);
-    return this.httpClient.get<AccountInterface[]>(`${environment.API_URL}/${id}/accounts`);
+  getUserAccounts(): Observable<AccountModel[]> {
+    return this.httpClient
+      .get<AccountModel[]>(`${environment.API_URL}/accounts`);
   }
 }

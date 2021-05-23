@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,30 +10,36 @@ export class InputSelectComponent implements OnInit {
   @Input() controlName: string;
   @Input() label: string;
   @Input() form: FormGroup;
-  @Input() type: string = 'text';
-  @Input() controlStyle: string = "primary";
-  inputClases: string[] = ['mb-3', 'form-control'];
-  labelClases: string[] = ['col-sm-3' ,'col-form-label'];
+  @ViewChild('selected') selected: ElementRef;
+  @ViewChild('optionsContainer') optionsContainer: ElementRef;
+  @ViewChild('searchBox') searchBox: ElementRef;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.setStyle();
+    console.log(this.selected);
+
   }
 
 
-  setStyle() {
-    switch (this.controlStyle) {
-      case "primary":
-        this.inputClases = [...this.inputClases];
-        this.labelClases = [...this.labelClases];
-        break;
-      case "secondary":
-          this.inputClases = [...this.inputClases,'secondary-input','text-white'];
-          this.labelClases = [...this.labelClases, 'text-white'];
-        break
-      default:
-        break;
+  toggleSelector(){
+    if (this.optionsContainer.nativeElement.classList.contains("active")) {
+      this.optionsContainer.nativeElement.classList.remove("active");
+    } else {
+      let currentActive = document.querySelector(".options-container.active");
+
+      if (currentActive) {
+        currentActive.classList.remove("active");
+      }
+
+      this.optionsContainer.nativeElement.classList.add("active");
+    }
+
+    this.searchBox.nativeElement.value = "";
+    // filterList("");
+
+    if (this.optionsContainer.nativeElement.classList.contains("active")) {
+      this.searchBox.nativeElement.focus();
     }
   }
 

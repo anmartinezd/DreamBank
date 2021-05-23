@@ -4,8 +4,7 @@ import { AccountService } from '../core/services/account/account.service';
 import { StorageService } from '../core/services/storage/storage.service';
 import { UserModel } from '../core/models/user.model';
 import { Observable } from 'rxjs';
-import { AccountsModule } from './accounts.module';
-import { AccountModel } from '../core/models/account.model';
+import { AccountModel } from 'src/app/core/models/account.model';
 import { accountTypes } from '../core/constants/accunt-type.enum';
 
 @Component({
@@ -17,7 +16,7 @@ export class AccountsComponent implements OnInit {
 
   headers;
   accounts: any;
-  accounts$: Observable<AccountsModule>;
+  accounts$: Observable<AccountModel[]>;
 
   constructor(private accountService: AccountService, private storageService: StorageService) {
   }
@@ -36,7 +35,7 @@ export class AccountsComponent implements OnInit {
 
   subscribeToAccounts() {
     const userId = this.storageService.getCurrentStateProperty<UserModel>('user').id;
-    this.accounts$ = this.accountService.getUserAccounts(userId);
+    this.accounts$ = this.accountService.getUserAccounts();
   }
 
 

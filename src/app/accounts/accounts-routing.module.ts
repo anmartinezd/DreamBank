@@ -5,16 +5,20 @@ import { AccountsComponent } from './accounts.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'account-summary'
+    redirectTo: 'account-summary',
   },
   {
     path: 'account-summary',
-    component: AccountsComponent
-  }
+    component: AccountsComponent,
+  },
+  {
+    path: ':accountId/transactions',
+    loadChildren: () => import('../transactions/transactions.module').then((m) => m.TransactionsModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AccountsRoutingModule { }
+export class AccountsRoutingModule {}

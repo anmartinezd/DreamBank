@@ -9,7 +9,7 @@ export class AccountModel {
         return `${this.number} - ${this._accountName.toUpperCase()}`;
     }
 
-    number: number;
+    number: string;
     name: string;
     cardNumber: string;
     expirationDate: string;

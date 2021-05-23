@@ -4,7 +4,7 @@
             <a href="" class="nav-link fw-bold">Add Budgets</a>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="accounts;else loading"> 
         <div class="col">
             <app-gauge class="budget-container" [size]="250" [gap]="60" [strokeWidth]="10" [progress]="spentPercentage">
                 <div class="">
@@ -17,3 +17,4 @@
         </div>
     </div>
 </div>
+<ng-template #loading>loading...</ng-template>

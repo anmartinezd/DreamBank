@@ -11,7 +11,7 @@ export class TableComponent implements OnInit {
   private rowClicked: HTMLElement;
   @Input() hasIcons: boolean = false;
   @Input() headers: {label: string, key:string}[];
-  @Input() dataSource: {[key:string]: string}[];
+  @Input() dataSource: {[key:string]: any}[];
   @Output() onRowClicked: EventEmitter<{[key:string]:string}> = new EventEmitter();
   constructor() { }
 

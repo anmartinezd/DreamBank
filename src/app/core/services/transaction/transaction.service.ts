@@ -13,7 +13,11 @@ export class TransactionService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getTransactions(id:string): Observable<TransactionInterface[]>{
-    return this.httpClient.get<TransactionInterface[]>(`${environment.API_URL}/${id}/transactions`);
+  transactions(accountId:string): Observable<TransactionInterface[]>{
+    return this.httpClient.get<TransactionInterface[]>(`${environment.API_URL}/accounts/${accountId}/transactions`);
   }
+
+  transactionDetail(accountId:string, id:string): Observable<TransactionInterface>{
+    return this.httpClient.get<TransactionInterface>(`${environment.API_URL}/accounts/${accountId}/transactions/${id}`);
+  } 
 }
