@@ -43,7 +43,7 @@ export class AccountsComponent implements OnInit {
     this.accounts$ = this.accountService.getUserAccounts(userId);
   }
 
-  handleAccountSelect(account) {
-    this.router.navigate(['..',account.id,'transactions'], {relativeTo: this.route});
+  handleAccountSelect(account): void {
+    this.router.navigate(['..',`${account.id}_${account.accountName}`,'transactions'], {relativeTo: this.route});
   }
 }

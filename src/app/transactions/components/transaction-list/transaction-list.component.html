@@ -1,11 +1,79 @@
 <div class="container-fluid">
-    <div class="row">
+  <div class="row">
+    <div class="title">
+      <span>{{ accountName }}</span>
+      <a routerLink="../../" class="out-btn">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #d8e1ef;
+              }
+              .cls-2 {
+                fill: #0593ff;
+              }
+            </style>
+          </defs>
+          <g id="out">
+            <rect
+              class="cls-1"
+              height="26"
+              rx="4"
+              ry="4"
+              width="20"
+              x="2"
+              y="3"
+            />
+            <path
+              class="cls-2"
+              d="M29.71,15.29l-4-4a1,1,0,0,0-1.42,1.42L26.59,15H12a1,1,0,0,0,0,2H26.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4A1,1,0,0,0,29.71,15.29Z"
+            />
+          </g>
+        </svg>
+      </a>
     </div>
-    <div class="row">
-        <div class="col">
-            <app-table [headers]="headers" [dataSource]="transactions$ | async" (onRowClicked)="handleRowClicked($event)">
-                All Transactions
-            </app-table>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-table
+        [headers]="headers"
+        [dataSource]="transactions$ | async"
+        (onRowClicked)="handleRowClicked($event)"
+      >
+        <!-- Time Frame selection -->
+        <div>
+          <button
+            class="btn btn-sm timeframe-button"
+            (click)="handleTimeFrame(allTransactions)"
+            id="all"
+            #allTransactions
+          >
+            All transactions
+          </button>
+          <button
+            class="btn btn-sm timeframe-button"
+            (click)="handleTimeFrame(last3Months)"
+            id="las3months"
+            #last3Months
+          >
+            Last 3 months
+          </button>
+          <button
+            class="btn btn-sm timeframe-button"
+            (click)="handleTimeFrame(lastYear)"
+            id="lastYear"
+            #lastYear
+          >
+            Last Year
+          </button>
         </div>
+        <div id="tableFooter" class="ammount-average__container">
+          <span class="totalization-title">Ammount average: </span>
+          <span class="totalization-information">{{
+            spentAverage | currency
+          }}</span>
+        </div>
+      </app-table>
     </div>
+  </div>
 </div>

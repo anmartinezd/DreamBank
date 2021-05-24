@@ -6,7 +6,7 @@ export class AccountModel {
   private _accountName: string;
 
   public get accountName(): string {
-    return `${this.number} - ${this._accountName.toUpperCase()}`;
+    return `${this.number}-${this._accountName.toUpperCase()}`;
   }
 
   number: string;

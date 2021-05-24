@@ -1,36 +1,69 @@
 <div class="container">
-    <div class="modal-header border-0 bg-dark text-white">
-        <h2 class="fw-bold">
-            <i class="fas fa-adjust"></i> Dream Bank
-        </h2>
-        <button type="button" class="btn-close btn-close-white" aria-label="Close"
-            (click)="activeModal.dismiss('Cross click')">
-        </button>
-    </div>
-    <div class="modal-body bg-dark text-white">
-        <div class="container py-5">
-            <div class="row text-center justify-content-center">
-                <div class="col-6 py-5">
-                    <h5 class="fw-bold">
-                        <span class="border-0 border-info border-bottom">Request</span>
-                    </h5>
-                    <h1 class="fw-bold py-2">New product</h1>
-                    <p class="text-break py-1 lh-1 mb-4">
-                        Instant Payments and a lot of withdrawal methods avaible.
-                    </p>
-                    <form class="my-4" [formGroup]="productForm" autocomplete="off" (ngSubmit)="onSubmit()">
-                        <app-input-select controlStyle="secondary" label="Product" [form]="productForm" controlName="product"></app-input-select>
-                        <app-input-text controlStyle="secondary" label="Cellphone" [form]="productForm" controlName="cellphone"></app-input-text>
-                        <app-input-text controlStyle="secondary" label="Monthly income" [form]="productForm" controlName="cellphone"></app-input-text>
-                        <div class="row justify-content-end mt-3">
-                            <div class="d-grid col-9">
-                                <button class="btn btn-info" type="submit" [disabled]="!this.productForm.valid">Send</button>
-                                <button class="btn text-white">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+  <div class="modal-header border-0 bg-dark text-white">
+    <h2 class="fw-bold"><i class="fas fa-adjust"></i> Dream Bank</h2>
+    <button
+      type="button"
+      class="btn-close btn-close-white"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body bg-dark text-white">
+    <div class="container py-5">
+      <div class="row text-center justify-content-center">
+        <div class="col-6 py-5">
+          <h5 class="fw-bold">
+            <span class="border-0 border-info border-bottom">Request</span>
+          </h5>
+          <h1 class="fw-bold py-2">New product</h1>
+          <p class="text-break py-1 lh-1 mb-4">
+            Instant Payments and a lot of withdrawal methods avaible.
+          </p>
+          <form
+            class="my-4"
+            [formGroup]="productForm"
+            autocomplete="off"
+            (ngSubmit)="onSubmit()"
+          >
+            <app-input-select
+              [form]="productForm"
+              controlName="product"
+              label="product"
+              [options]="products"
+            >
+            </app-input-select>
+            <app-input-text
+              controlStyle="secondary"
+              label="Cellphone"
+              [form]="productForm"
+              controlName="cellphone"
+            ></app-input-text>
+            <app-input-text
+              controlStyle="secondary"
+              label="Monthly income"
+              [form]="productForm"
+              controlName="monthlyIncome"
+            ></app-input-text>
+            <div class="row justify-content-end mt-3">
+              <div class="d-grid col-9">
+                <button
+                  class="btn btn-info"
+                  type="submit"
+                  [disabled]="!this.productForm.valid"
+                >
+                  Send
+                </button>
+                <button
+                  class="btn text-white"
+                  (click)="activeModal.dismiss('Cross click')"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>

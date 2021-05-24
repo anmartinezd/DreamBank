@@ -8,11 +8,12 @@ import { UserInformationComponent } from './components/user-information/user-inf
 import { NewProductComponent } from './components/new-product/new-product.component';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderPresentationComponent } from './components/header-presentation/header-presentation.component';
+import { RequestSucessComponent } from './components/request-sucess/request-sucess.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, HeaderContainerComponent, SidebarComponent, UserInformationComponent, NewProductComponent, HeaderPresentationComponent],
+  declarations: [DashboardComponent, HeaderContainerComponent, SidebarComponent, UserInformationComponent, NewProductComponent, HeaderPresentationComponent, RequestSucessComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

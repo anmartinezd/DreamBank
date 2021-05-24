@@ -6,6 +6,7 @@ import {
   HttpEvent,
   HttpInterceptor,
   HTTP_INTERCEPTORS,
+  HttpParams,
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
@@ -14,7 +15,7 @@ import { TransactionInterface } from '../interfaces/api-responses/transaction.in
 import { UserInterface } from '../interfaces/api-responses/user.interface';
 import { AccountInterface } from '../interfaces/api-responses/account.interface';
 import { accountTypes } from '../constants/accunt-type.enum';
-
+import { differenceInMonths } from 'date-fns'
 // array in local storage for registered users
 const credentialsList = [
   {
@@ -56,9 +57,9 @@ const transactions: TransactionInterface[] = [
   {
     id: 19266836572662,
     accountId: 123456,
-    ammount: 6266.33,
+    ammount: 3449.22,
     status: transactionStatus.accepted,
-    date: '2021-05-16T23:13:43Z',
+    date: '2020-06-16T23:13:43Z',
     description: 'Payment Virt AS',
     currency: 'USD',
     balance: 6266.33,
@@ -68,7 +69,7 @@ const transactions: TransactionInterface[] = [
     accountId: 123456,
     ammount: -23.86,
     status: transactionStatus.accepted,
-    date: '2021-05-16T23:13:43Z',
+    date: '2020-11-16T23:13:43Z',
     description: 'Payment Virt AS',
     currency: 'USD',
     balance: 6266.33,
@@ -76,9 +77,9 @@ const transactions: TransactionInterface[] = [
   {
     id: 19266836572664,
     accountId: 123456,
-    ammount: 6266.33,
+    ammount: 4449.22,
     status: transactionStatus.declined,
-    date: '2021-05-16T23:13:43Z',
+    date: '2020-12-16T23:13:43Z',
     description: 'INT IVA',
     currency: 'USD',
     balance: 6266.33,
@@ -86,9 +87,9 @@ const transactions: TransactionInterface[] = [
   {
     id: 19266836572665,
     accountId: 123456,
-    ammount: 6266.33,
+    ammount: 5999.22,
     status: transactionStatus.accepted,
-    date: '2021-05-16T23:13:43Z',
+    date: '2020-10-16T23:13:43Z',
     description: 'Payment Virt AS',
     currency: 'USD',
     balance: 6266.33,
@@ -96,7 +97,7 @@ const transactions: TransactionInterface[] = [
   {
     id: 19266836572666,
     accountId: 12345678,
-    ammount: -23.86,
+    ammount: -233.86,
     status: transactionStatus.declined,
     date: '2021-05-16T23:13:43Z',
     description: 'INT IVA',
@@ -129,6 +130,56 @@ const transactions: TransactionInterface[] = [
     ammount: 6266.33,
     status: transactionStatus.waiting,
     date: '2021-05-16T23:13:43Z',
+    description: 'Payment Virt AS',
+    currency: 'USD',
+    balance: 6266.33,
+  },
+  {
+    id: 19266836572668,
+    accountId: 123456789,
+    ammount: 6266.33,
+    status: transactionStatus.waiting,
+    date: '2021-05-16T23:13:43Z',
+    description: 'Payment Virt AS',
+    currency: 'USD',
+    balance: 6266.33,
+  },
+  {
+    id: 19266836572668,
+    accountId: 123456789,
+    ammount: 6266.33,
+    status: transactionStatus.waiting,
+    date: '2020-05-16T23:13:43Z',
+    description: 'Payment Virt AS',
+    currency: 'USD',
+    balance: 6266.33,
+  },
+  {
+    id: 19266836572668,
+    accountId: 123456789,
+    ammount: 6266.33,
+    status: transactionStatus.waiting,
+    date: '2020-07-16T23:13:43Z',
+    description: 'Payment Virt AS',
+    currency: 'USD',
+    balance: 6266.33,
+  },
+  {
+    id: 19266836572668,
+    accountId: 123456789,
+    ammount: 6266.33,
+    status: transactionStatus.waiting,
+    date: '2021-03-16T23:13:43Z',
+    description: 'Payment Virt AS',
+    currency: 'USD',
+    balance: 6266.33,
+  },
+  {
+    id: 19266836572668,
+    accountId: 123456789,
+    ammount: 6266.33,
+    status: transactionStatus.waiting,
+    date: '2021-04-16T23:13:43Z',
     description: 'Payment Virt AS',
     currency: 'USD',
     balance: 6266.33,
@@ -233,14 +284,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     // wrap in delayed observable to simulate server api call
     return of(null).pipe(
-      delay(2000),
+      delay(0),
       mergeMap(handleRoute),
       materialize(),
       dematerialize()
     );
 
     function handleRoute() {
-      console.log;
       switch (true) {
         case url.endsWith('authenticate') && method === 'POST':
           return authenticate();
@@ -250,11 +300,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         case url.endsWith('accounts') && method === 'GET':
           return getAccounts();
         case url.endsWith('transactions') && method === 'GET':
-          return getTransactionsById();
+          return getTransactions(request.params);
         case url.match('transactions/[0-9]*') && method === 'GET':
-          return getTransaction();
-        case url.endsWith('/logout') && method === 'POST':
-          return logout();
+          const transactionId = url.split('/').pop();
+          return getTransaction(parseInt(transactionId));
+        case url.endsWith('/request') && method === 'POST':
+          return requestNewProduct();
         default:
           // pass through any requests not handled above
           return next.handle(request);
@@ -279,7 +330,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     /** */
     function getUser(userId: number): Observable<HttpResponse<UserInterface>> {
-      console.log(userId);
       const user = users.find((user) => (user.id = userId));
       return ok(user);
     }
@@ -288,25 +338,23 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       return ok(accounts);
     }
 
-    function getTransaction() {
-      const transaction = {
-        id: 19266836572668,
-        ammount: 6266.33,
-        status: transactionStatus.waiting,
-        date: '2021-05-16T23:13:43Z',
-        description: 'Payment Virt AS',
-        currency: 'USD',
-        balance: 6266.33,
-      };
+    function getTransaction(transactionId: number) {
+      const transaction = transactions.find(transaction => transaction.id === transactionId);
       return ok(transaction);
     }
 
-    function getTransactionsById() {
-      return ok(transactions);
+    function getTransactions(params: HttpParams) {
+      const from = params.get('from');
+      const to = params.get('to');
+      const difference = differenceInMonths(new Date(from),new Date(to));
+      console.log(difference);
+      return ok(transactions.filter(transaction => 
+        differenceInMonths(new Date(from),new Date(transaction.date)) <= difference
+      ));
     }
 
-    function logout() {
-      return ok({});
+    function requestNewProduct() {
+      return ok('request sucess');
     }
 
     // helper functions

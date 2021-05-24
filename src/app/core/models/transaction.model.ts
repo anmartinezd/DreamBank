@@ -6,7 +6,7 @@ export class TransactionModel {
   ammount: number;
   status: transactionStatus;
   accountId: number;
-  date: Date;
+  date: Date | string;
   description: string;
   currency: string;
   balance: number;

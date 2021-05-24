@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { TransactionInterface } from '../../interfaces/api-responses/transaction.interface';
@@ -13,10 +13,13 @@ import { TransactionModel } from '../../models/transaction.model';
 export class TransactionService {
   constructor(private httpClient: HttpClient) {}
 
-  transactions(accountId: string): Observable<TransactionModel[]> {
+  transactions(accountId: string,timeFrame: {from:string, to:string}): Observable<TransactionModel[]> {
     return this.httpClient
       .get<TransactionInterface[]>(
-        `${environment.API_URL}/accounts/${accountId}/transactions`
+        `${environment.API_URL}/accounts/${accountId}/transactions`,
+        {
+          params: timeFrame
+        }
       )
       .pipe(
         map(transactions => transactions.map(transaction =>new TransactionModel(transaction)))

@@ -7,6 +7,7 @@ import { InputTextComponent } from './components/forms/input-text/input-text.com
 import { InputSelectComponent } from './components/forms/input-select/input-select.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule
   ],
   exports: [
     NgbModule,
@@ -32,6 +34,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     InputSelectComponent,
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule
   ]
 })
 export class SharedModule { }
