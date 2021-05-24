@@ -30,8 +30,8 @@ export class InputTextComponent implements OnInit {
         this.labelClases = [...this.labelClases];
         break;
       case "secondary":
-          this.inputClases = [...this.inputClases,'secondary-input','text-white'];
-          this.labelClases = [...this.labelClases, 'text-white'];
+          this.inputClases = [...this.inputClases,  'secondary-input'];
+          this.labelClases = [...this.labelClases];
         break
       default:
         break;

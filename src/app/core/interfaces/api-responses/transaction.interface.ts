@@ -1,11 +1,11 @@
 import { transactionStatus } from "../../constants/transaction-status.enum";
 
 export interface TransactionInterface{
-    transactionId: number;
+    id: number;
+    accountId: number;
     ammount: number;
-    transactionStatus: transactionStatus;
+    status: transactionStatus;
     date: string;
-    hour: string;
     description: string;
     currency: string;
     balance: number; 

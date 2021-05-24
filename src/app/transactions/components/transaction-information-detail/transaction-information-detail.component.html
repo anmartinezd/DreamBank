@@ -1,0 +1,43 @@
+<div *ngIf="transaction; else loading">
+    <div class="transaction-informaton__container">
+        <div class="item-label">
+            <span>Description:</span>
+        </div>
+        <div class="item-information">
+            {{transaction.description}}
+        </div>
+        <div class="item-label">
+            Ammount:
+        </div>
+        <div class="item-information">
+            {{transaction.ammount | currency}}
+        </div>
+        <div class="item-label">
+            Status:
+        </div>
+        <div class="item-information">
+            {{transaction.status}}
+        </div>
+        <div class="item-label">
+            Date: 
+        </div>
+        <div class="item-information">
+            {{transaction.date | date: 'short'}}
+        </div>
+        <div class="item-label">
+            Currency: 
+        </div>
+        <div class="item-information">
+            {{transaction.currency}}
+        </div>
+        <div class="item-label">
+            Taxes:
+        </div>
+        <div class="item-information">
+            {{transaction.balance | currency}}
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    Loading ...
+</ng-template>

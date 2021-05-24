@@ -1,0 +1,10 @@
+<div class="container-fluid p-0 container__overflowx">
+    <app-header-presentation [user]="user$ | async"></app-header-presentation>
+    <!-- account intfomation begin -->
+    <div class="row border bg-primary justify-content-center py-2 text-white">
+        <div class="col-12">
+            <app-user-information [user]="user$ | async"></app-user-information>
+        </div>
+    </div>
+    <!-- account intfomation end -->
+</div>

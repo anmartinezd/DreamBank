@@ -14,7 +14,7 @@ $info:          #6ef2e7;
 $warning:       #f69e00;
 $danger:        #f08789;
 $light:         #f9f9f9;
-$dark:          #022552;
+$dark:          #012C60;
 
 // body customization
 $body-color: $primary;
@@ -27,7 +27,7 @@ $btn-padding-y: .5em;
 $btn-border-radius-sm: 40px;
 
 //forms
-$form-padding-y: 0.5rem;
+$form-padding-y: 0.3rem;
 $form-feedback-icon-valid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='#{$info}' d='M0 11.522l1.578-1.626 7.734 4.619 13.335-12.526 1.353 1.354-14 18.646z'/></svg>");
 $form-feedback-icon-invalid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='#{$danger}' d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'/></svg>");
 // inputs text
@@ -57,5 +57,18 @@ $modal-backdrop-opacity: 1;
 //tables customization
 $table-color: #8c8c8c;
 $table-active-bg-factor: .075;
-
 $box-shadow:   0rem .1rem 1rem rgba($dark, .15);
+
+
+$ng-select-highlight: $info;
+$ng-select-primary-text: white;
+$ng-select-disabled-text: #f9f9f9;
+$ng-select-border: white;
+$ng-select-border-radius: .25rem;
+$ng-select-bg: $dark;
+$ng-select-selected: lighten($ng-select-highlight, 10);
+$ng-select-marked: lighten($ng-select-highlight,10);
+$ng-select-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 126, 255, 0.1) !default;
+$ng-select-placeholder: lighten($ng-select-primary-text, 40) !default;
+$ng-select-value-padding-left: 10px !default;
+$ng-select-value-font-size: 0.9em !default;

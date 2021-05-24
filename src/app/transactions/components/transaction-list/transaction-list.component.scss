@@ -1,0 +1,43 @@
+@import '../../../../styles/variables';
+
+.title{
+    padding: 1em;
+    background-color: lighten($color: #000000, $amount: 90);
+    color: lighten($color: #000000, $amount: 40);
+    border-radius: 1em;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.out-btn{
+    height: 2em;
+    width: 2em;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.timeframe-button{
+    transition: all 0.5s;
+}
+
+.active {
+    background-color: $dark;
+    color: $light;
+}
+
+.ammount-average__container{
+    display: flex;
+    justify-content: flex-end;
+    padding: .5em 1em;
+    align-items: baseline;
+    padding: 0px 3em;
+}
+
+.totalization-title{
+    color: lighten($color: #000000, $amount: 40);
+    padding: 1em;
+}
+

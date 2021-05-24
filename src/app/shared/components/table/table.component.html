@@ -5,7 +5,8 @@
     </div>
   </div>
   <div class="row table-separator">
-    <div class="col-12 p-1 table-responsive">
+    <div class="col-12 p-1 table-responsive" *ngIf="dataSource; else loading" >
+      
       <table class="table table-borderless table-hover">
         <thead>
           <tr>
@@ -20,6 +21,8 @@
           </tr>
         </tbody>
       </table>
+      <ng-content select="#tableFooter"></ng-content>
     </div>
   </div>
 </div>
+<ng-template #loading>loading...</ng-template>

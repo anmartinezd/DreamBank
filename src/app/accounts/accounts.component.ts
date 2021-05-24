@@ -1,73 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountInterface } from '../core/interfaces/api-responses/account.interface';
 import { AccountService } from '../core/services/account/account.service';
-import { StorageService } from '../core/services/storage/storage.service';
+import { SessionService } from '../core/services/session/session.service';
 import { UserModel } from '../core/models/user.model';
 import { Observable } from 'rxjs';
-import { AccountsModule } from './accounts.module';
-import { AccountModel } from '../core/models/account.model';
+import { AccountModel } from 'src/app/core/models/account.model';
 import { accountTypes } from '../core/constants/accunt-type.enum';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-accounts',
   templateUrl: './accounts.component.html',
-  styleUrls: ['./accounts.component.scss']
+  styleUrls: ['./accounts.component.scss'],
 })
 export class AccountsComponent implements OnInit {
-
   headers;
   accounts: any;
-  accounts$: Observable<AccountsModule>;
+  accounts$: Observable<AccountModel[]>;
 
-  constructor(private accountService: AccountService, private storageService: StorageService) {
+  constructor(
+    private accountService: AccountService,
+    private sessionService: SessionService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+
   }
 
   ngOnInit(): void {
-    this.subscribeToAccounts()
+    this.subscribeToAccounts();
     this.headers = [
       { label: 'Type', key: 'type' },
-      { label: "Account Name", key: "accountName" },
+      { label: 'Account Name', key: 'accountName' },
       { label: 'Status', key: 'status' },
       { label: 'Currency', key: 'currency' },
-      { label: 'Balance', key: 'balance' }
+      { label: 'Balance', key: 'balance' },
     ];
-    this.loadAccounts();
   }
 
-  subscribeToAccounts() {
-    const userId = this.storageService.getCurrentStateProperty<UserModel>('user').id;
+  subscribeToAccounts(): void {
+    const userId = this.sessionService.getUserId();
     this.accounts$ = this.accountService.getUserAccounts(userId);
   }
 
-
-  loadAccounts() {
-    this.accounts$.subscribe(
-      {
-        next: (accounts: AccountInterface[]) => {
-          this.accounts = this.generateAccountsIcons(accounts);
-          console.log(this.accounts);
-
-        }
-      }
-    );
+  handleAccountSelect(account): void {
+    this.router.navigate(['..',`${account.id}_${account.accountName}`,'transactions'], {relativeTo: this.route});
   }
-
-  generateAccountsIcons(accounts: AccountInterface[]): any {
-    return accounts.map(reponseAccount => {
-      const account = new AccountModel(reponseAccount);
-      switch (account.type) {
-        case accountTypes.checking:
-          account.icon = "fas fa-money-check-alt"
-          break;
-
-        case accountTypes.savings:
-          account.icon = "fas fa-piggy-bank";
-          break;
-      }
-
-      return account;
-    }
-    );
-  }
-
 }

@@ -1,7 +1,7 @@
 <div class="container-fluid ">
     <div class="row mb-5">
         <!-- Account Selector Component -->
-        <app-table [headers]="headers" [dataSource]="accounts" [hasIcons]="true">
+        <app-table [hasIcons]="true" [headers]="headers" [dataSource]="accounts$ | async" (onRowClicked)="handleAccountSelect($event)">
             <a routerLink="" class="text-muted text-decoration-none">ALL ACCOUNTS</a>
         </app-table>
     </div>
@@ -14,7 +14,7 @@
                         class="h4 fw-bold align-text-bottom mt-2">Wallet</span>
                 </div>
             </div>
-            <app-cards-list [accounts]="accounts"></app-cards-list>
+            <app-cards-list [accounts]="accounts$ | async"></app-cards-list>
         </div>
         <!-- Budget Component -->
         <div class="col-4">
@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <app-budget [accounts]="accounts"></app-budget>
+                    <app-budget [accounts]="accounts$ | async"></app-budget>
                 </div>
             </div>
         </div>
