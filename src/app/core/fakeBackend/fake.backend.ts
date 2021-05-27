@@ -284,7 +284,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     // wrap in delayed observable to simulate server api call
     return of(null).pipe(
-      delay(0),
+      delay(500),
       mergeMap(handleRoute),
       materialize(),
       dematerialize()
